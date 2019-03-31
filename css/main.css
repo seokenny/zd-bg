@@ -3,6 +3,7 @@
     width:100%;
     background-color:#EFF9F0;
     position:relative;
+    font-family:"Special Elite";
 }
 
 #game_board {
@@ -33,21 +34,21 @@
 .left_side {
     width:20%;
     height:100%;
-    background-color:rgba(0,0,0,.5);
+    /* background-color:rgba(0,0,0,.5); */
     float:left;
 }
 
 .center_side {
     width:50%;
     height:100%;
-    background-color:orange;
+    /* background-color:orange; */
     float:left;
 }
 
 .right_side {
     width:30%;
     height:100%;
-    background-color:rgba(255,255,255,.5);
+    /* background-color:rgba(255,255,255,.5); */
     float:left;
 }
 
@@ -63,22 +64,95 @@
 }
 
 .dice_border {
-    width:55%;
-    padding-top:55%;
-    border:1px solid white;
-    margin:5px;
+    width:70%;
+    padding-top:70%;
+    background:white;
+    margin:5%;
     display:inline-block;
+}
+
+.d1 {
+    margin-top:45%;
 }
 
 /**PLAYER CARDS**/
 .players-section {
     text-align:center;
+    height:100%;
 }
 
 .p-card {
     width:80%;
     height:20%;
     border:1px solid white;
-    margin:5px;
+    margin:2.5%;
     display:inline-block;
+}
+
+.player-card-0 {
+    margin-top:12.5%;
+}
+
+.p-pic {
+    height:100%;
+    width:50%;
+    background:white;
+}
+
+/**CENTER**/
+.cs_section {
+    text-align:center;
+}
+
+.center_rows {
+    width:80%;
+    height:20%;
+    border:1px solid white;
+    display:inline-block;
+    margin:5px;
+}
+
+.zd-title {
+    font-size:2em;
+    border:unset;
+}
+
+.zd-scorer {
+    height:10%;
+}
+
+.half_row {
+    height:100%;
+    width:50%;
+    float:left;
+}
+
+.zd-brains {
+    background:white;
+}
+
+.zd-shots {
+    background:#ddd;
+}
+
+.zd_active_dice {
+    width:33.33%;
+    height:100%;
+    float:left;
+}
+
+.zd-dice-0 {
+    background:white;
+}
+
+.zd-dice-1 {
+    background:#ddd;
+}
+
+.zd-dice-2 {
+    background:#aaa;
+}
+
+.zd-player-actions {
+    background:white;
 }

@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
 </head>
 <body>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Special+Elite');
+</style>
 
 <div id="full_back">
     <div id="game_board" class="wt_center">
@@ -16,7 +19,7 @@
             <!--LEFT-SIDE-->
             <div class="left_side">
                 <div class="dice-7">
-                    <div class="dice_border"></div>
+                    <div class="dice_border d1"></div>
                     <div class="dice_border"></div>
                     <div class="dice_border"></div>
                     <div class="dice_border"></div>
@@ -25,7 +28,7 @@
                     <div class="dice_border"></div>
                 </div>
                 <div class="dice-7 r-dice-7">
-                    <div class="dice_border"></div>
+                    <div class="dice_border d1"></div>
                     <div class="dice_border"></div>
                     <div class="dice_border"></div>
                     <div class="dice_border"></div>
@@ -35,15 +38,43 @@
             </div>
             <!--CENTER SIDE-->
             <div class="center_side">
+                <div class="cs_section">
+                    <div class="zd-title center_rows">
+                        <h1>ZOMBIE DICE</h1>
+                    </div>
+                    <div class="zd-scorer center_rows">
+                        <div class="zd-brains half_row">
 
+                        </div>
+                        <div class="zd-shots half_row">
+
+                        </div>
+                    </div>
+                    <div class="zd-main-dice center_rows">
+                        <div class="zd-dice-0 zd_active_dice"></div>
+                        <div class="zd-dice-1 zd_active_dice"></div>
+                        <div class="zd-dice-2 zd_active_dice"></div>
+                    </div>
+                    <div class="zd-player-actions center_rows">
+
+                    </div>
+                </div>
             </div>
             <!--RIGHT SIDE-->
             <div class="right_side">
                 <div class="players-section">
-                    <div class="player-card-0 p-card"></div>
-                    <div class="player-card-1 p-card"></div>
-                    <div class="player-card-2 p-card"></div>
-                    <div class="player-card-3 p-card"></div>
+                    <div class="player-card-0 p-card">
+                        <div class="player-pic-0 p-pic"></div>
+                    </div>
+                    <div class="player-card-1 p-card">
+                        <div class="player-pic-1 p-pic"></div>
+                    </div>
+                    <div class="player-card-2 p-card">
+                        <div class="player-pic-2 p-pic"></div>
+                    </div>
+                    <div class="player-card-3 p-card">
+                        <div class="player-pic-3 p-pic"></div>
+                    </div>
                 </div>
             </div>
         </div>
