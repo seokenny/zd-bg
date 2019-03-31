@@ -10,3 +10,10 @@ If you collect 3 shotgun blasts, you lose all the points for that round.
 After rolling 3 dice, you can choose to hold and save the points, or
 keep pushing and roll 3 more dice.
 **/
+
+var activePlayer, scores;
+
+function init(){
+    scores = [0,0,0,0];
+    activePlayer = 0;
+}

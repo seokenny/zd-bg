@@ -64,8 +64,6 @@
 }
 
 .dice_border {
-    width:70%;
-    padding-top:70%;
     background:white;
     margin:5%;
     display:inline-block;
@@ -73,6 +71,10 @@
 
 .d1 {
     margin-top:45%;
+}
+
+.dice-7 img {
+    width:70%;
 }
 
 /**PLAYER CARDS**/
@@ -84,9 +86,10 @@
 .p-card {
     width:80%;
     height:20%;
-    border:1px solid white;
+    background:white;
     margin:2.5%;
     display:inline-block;
+    box-shadow:2px 2px 4px #444;
 }
 
 .player-card-0 {
@@ -115,6 +118,7 @@
 .zd-title {
     font-size:2em;
     border:unset;
+    color:white;
 }
 
 .zd-scorer {
@@ -127,11 +131,11 @@
     float:left;
 }
 
-.zd-brains {
+.zd-shots {
     background:white;
 }
 
-.zd-shots {
+.zd-brains {
     background:#ddd;
 }
 
@@ -155,4 +159,25 @@
 
 .zd-player-actions {
     background:white;
+}
+
+/**PLAYER IMAGES**/
+.player-pic-0, .player-pic-1, .player-pic-2, .player-pic-3 {
+    background-size:cover;
+}
+
+.player-pic-0 {
+    background-image:url("../images/zombie-0.jpg");
+}
+
+.player-pic-1 {
+    background-image:url("../images/zombie-1.jpg");
+}
+
+.player-pic-2 {
+    background-image:url("../images/zombie-2.jpg");
+}
+
+.player-pic-3 {
+    background-image:url("../images/zombie-3.jpg");
 }
