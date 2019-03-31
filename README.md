@@ -1,1 +1,1 @@
-# zd-bg
+# Zombie Dice Game
