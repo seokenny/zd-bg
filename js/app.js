@@ -13,7 +13,31 @@ keep pushing and roll 3 more dice.
 
 var activePlayer, scores;
 
+init();
+
+//When clicked, go to next player
+document.querySelector(".zd-player-actions").addEventListener("click",function(){
+    nextPlayer();
+});
+
 function init(){
     scores = [0,0,0,0];
     activePlayer = 0;
+
+    document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
+}
+
+function rollAllDice(){
+
+}
+
+function nextPlayer(){
+    document.querySelector(".player-card-" + activePlayer).classList.remove("player_active_border");
+    if(activePlayer == 3){
+        activePlayer = 0;
+    }
+    else activePlayer += 1;
+    document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
+
+    document.querySelector(".cpd_text").innerHTML = "PLAYER<br>" + (activePlayer + 1);
 }

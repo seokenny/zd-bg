@@ -1,3 +1,8 @@
+h1, h2, h3, h4, h5, h6, ul {
+    margin:unset;
+    padding:unset;
+}
+
 #full_back {
     height:100vh;
     width:100%;
@@ -180,4 +185,20 @@
 
 .player-pic-3 {
     background-image:url("../images/zombie-3.jpg");
+}
+
+.player_active_border {
+    border:7px solid black;
+}
+
+/**CURRENT PLAYER DISPLAY**/
+.current-player-display {
+    height:100px;
+    width:300px;
+    background:coral;
+    z-index:2;
+}
+
+.current-player-display h1 {
+    color:white;
 }
