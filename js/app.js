@@ -11,7 +11,22 @@ After rolling 3 dice, you can choose to hold and save the points, or
 keep pushing and roll 3 more dice.
 **/
 
-var activePlayer, scores;
+var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice;
+
+//GREEN DICE = TOTAL 6 = INDEX: 0-5
+//YELLOW DICE = TOTAL 4 = INDEX: 6-9
+//RED DICE = TOTAL 3 = INDEX: 10-12
+allDice = ["green-dice", "green-dice", "green-dice", "green-dice", "green-dice", "green-dice", "yellow-dice", "yellow-dice", "yellow-dice", "yellow-dice", "red-dice", "red-dice", "red-dice"];
+
+greenDice = ["green-brain", "green-brain", "green-brain", "green-walk", "green-walk", "green-bullet"];
+
+yellowDice = ["yellow-brain", "yellow-brain", "yellow-walk", "yellow-walk", "yellow-bullet", "yellow-bullet"];
+
+redDice = ["red-brain", "red-walk", "red-walk", "red-bullet", "red-bullet", "red-bullet"];
+
+usedDice = [];
+
+usedColorDice = [];
 
 init();
 
@@ -24,20 +39,38 @@ function init(){
     scores = [0,0,0,0];
     activePlayer = 0;
 
+    gamePlaying = true;
+
     document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
 }
 
 function rollAllDice(){
-
+    var colorDice = Math.floor(Math.random() * 13);
+    console.log(colorDice);
 }
 
 function nextPlayer(){
     document.querySelector(".player-card-" + activePlayer).classList.remove("player_active_border");
-    if(activePlayer == 3){
-        activePlayer = 0;
-    }
-    else activePlayer += 1;
+
+    activePlayer == 3 ? activePlayer = 0 : activePlayer += 1;
     document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
 
     document.querySelector(".cpd_text").innerHTML = "PLAYER<br>" + (activePlayer + 1);
+}
+
+//RECHECK WHY THIS WONT WORK (FIRST FOR LOOP)
+function resetDice(){
+    for(var i = 0; i < usedColorDice.length; i++){
+        if(usedColorDice[i] == "green-brain" || usedColorDice[i] == "green-walk" || usedColorDice[i] == "green-bullet"){
+            greenDice.push(usedColorDice[i]);
+        }
+        else if(usedColorDice[i] == "yellow-brain" || usedColorDice[i] == "yellow-walk" || usedColorDice[i] == "yellow-bullet"){
+            yellowDice.push(usedColorDice[i]);
+        }
+        else redDice.push(usedColorDice[i]);
+    }
+    //Return all used dice to allDice array
+    for(var i = 0; i < usedDice.length; i++){
+        allDice.push(usedDice[i]);
+    }
 }
