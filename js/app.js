@@ -44,9 +44,16 @@ function init(){
     document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
 }
 
+function chooseDice(){
+    var chosenThree = [];
+    for(var i = 0; i < 3; i++){
+        chosenThree.push(Math.floor(Math.random() * 13));
+    }
+    allDice.splice(i, 1);
+}
+
 function rollAllDice(){
-    var colorDice = Math.floor(Math.random() * 13);
-    console.log(colorDice);
+    
 }
 
 function nextPlayer(){
@@ -59,6 +66,8 @@ function nextPlayer(){
 }
 
 //RECHECK WHY THIS WONT WORK (FIRST FOR LOOP)
+//THIS WONT WORK BECAUSE IT USES THE GLOBAL ARRAY
+//I NEED TO MAKE AN ARRAY FOR EACH COLORED DICE
 function resetDice(){
     for(var i = 0; i < usedColorDice.length; i++){
         if(usedColorDice[i] == "green-brain" || usedColorDice[i] == "green-walk" || usedColorDice[i] == "green-bullet"){
