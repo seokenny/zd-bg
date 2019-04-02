@@ -16,19 +16,32 @@ var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice;
 //GREEN DICE = TOTAL 6 = INDEX: 0-5
 //YELLOW DICE = TOTAL 4 = INDEX: 6-9
 //RED DICE = TOTAL 3 = INDEX: 10-12
-allDice = ["green-dice", "green-dice", "green-dice", "green-dice", "green-dice", "green-dice", "yellow-dice", "yellow-dice", "yellow-dice", "yellow-dice", "red-dice", "red-dice", "red-dice"];
+allDice = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-greenDice = ["green-brain", "green-brain", "green-brain", "green-walk", "green-walk", "green-bullet"];
+//GREEN-BRAIN = TOTAL 3 = 0 - 2
+//GREEN-WALK = TOTAL 2 = 3 - 4
+//GREEN-BULLET = TOTAL 1 = 5
+greenDice = [0, 1, 2, 3, 4, 5];
 
-yellowDice = ["yellow-brain", "yellow-brain", "yellow-walk", "yellow-walk", "yellow-bullet", "yellow-bullet"];
+//YELLOW-BRAIN = TOTAL 2 = 0 - 1
+//YELLOW-WALK = TOTAL 2 = 2 - 3
+//YELLOW-BULLET = TOTAL 2 = 4 - 5
+yellowDice = [0, 1, 2, 3, 4, 5];
 
-redDice = ["red-brain", "red-walk", "red-walk", "red-bullet", "red-bullet", "red-bullet"];
+//RED-BRAIN = TOTAL 1 = 0
+//RED-WALK = TOTAL 2 = 1 - 2
+//RED-BULLET = TOTAL 3 = 3 - 5
+redDice = [0, 1, 2, 3, 4, 5];
 
 usedDice = [];
 
-usedColorDice = [];
-
 init();
+
+
+
+
+
+
 
 //When clicked, go to next player
 document.querySelector(".zd-player-actions").addEventListener("click",function(){
@@ -44,13 +57,91 @@ function init(){
     document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
 }
 
+// function chooseDice(){
+//     var chosenThree;
+//     chosenThree = [];
+//     var bothHave, usedHave, chosenHave, rechosenDice;
+//     while(chosenThree.length < 3){
+//         var chosenDice = Math.floor(Math.random()*allDice.length);
+//         //First roll ever - automatically push
+//         //Skips second time
+//         if(chosenThree.length == 0 && usedDice.length == 0){
+//             chosenThree.push(chosenDice);
+//             usedDice.push(chosenDice);
+//         }
+//         //If usedDice has but chosenThree is empty
+//         else if(chosenThree.length == 0){
+//             var count = 0;
+//             for(var i = 0; i < usedDice.length; i++){
+//                 if(chosenDice == usedDice[i]){
+//                     count++;
+//                 }
+//             }
+//             if(count < 1){
+//                 chosenThree.push(chosenDice);
+//                 usedDice.push(chosenDice);
+//             }
+//         }
+//         else {
+//             for(var i = 0; i < chosenThree.length; i++){
+//                 if(chosenDice != chosenThree[i]){
+//                     chosenHave = true;
+//                 }
+//                 else {
+//                     choseHave = false;
+//                     while(chosenHave == false){
+//                         rechosenDice = rerollUntilNew(chosenThree, usedDice);
+//                     }
+//                 }
+//             }
+//             for(var i = 0; i < usedDice.length; i++){
+//                 if(chosenDice != usedDice[i]){
+//                     usedHave = true;
+//                 } else usedHave = false;
+//                 console.log(usedHave);
+//             }
+//             if(usedHave == true && chosenHave == true){
+//                 chosenThree.push(chosenDice);
+//                 usedDice.push(chosenDice);
+//             }
+//         }
+//     }
+//     console.log(chosenThree);
+// }
+
 function chooseDice(){
-    var chosenThree = [];
-    for(var i = 0; i < 3; i++){
-        chosenThree.push(Math.floor(Math.random() * 13));
+    var counter = 0;
+    while(counter < 3){
+        var chosenDice = Math.floor(Math.random() * allDice.length);
+        var indexHolder = parseInt(allDice.splice(chosenDice, 1));
+        usedDice.push(indexHolder);
+        counter++;
     }
-    allDice.splice(i, 1);
 }
+
+
+// function rerollUntilNew(chosenThree, usedDice){
+//     var rechosenDice = Math.floor(Math.random()*allDice.length);
+//     var ifTrue = true;
+//     while(ifTrue){
+//         var counter = 0;
+//         for(var i = 0; i < chosenThree.length; i++){
+//             if(rechosenDice != chosenThree[i]){
+//                 counter++;
+//             }
+//         }
+//         for(var i = 0; i < usedDice.length; i++){
+//             if(rechosenDice != usedDice[i]){
+//                 counter++;
+//             }
+//         }
+//         if(counter = 2){
+//             ifTrue = false;
+//         }
+//         else rechosenDice = Math.floor(Math.random()*allDice.length);
+//     }
+//     return rechosenDice;
+// }
 
 function rollAllDice(){
     
