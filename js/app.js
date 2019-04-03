@@ -163,8 +163,45 @@ function chooseDice(){
 //     return rechosenDice;
 // }
 
+document.querySelector(".zd-shots").addEventListener("click",function(){
+    rollAllDice();
+});
+
 function rollAllDice(){
-    
+    for(var i = 0; i < 3; i++){
+        var diceRoll = Math.floor(Math.random() * 6);
+        var activeDice = document.querySelector(".active-dice-" + i);
+        //If green dice
+        if(activeDice.src == "images/green-question.jpg"){
+            if(diceRoll >= 0 && diceRoll < 3){
+                activeDice.src = "images/green-brain.jpg";
+            }
+            else if(diceRoll == 3 || diceRoll == 4){
+                activeDice.src = "images/green-walk.jpg";
+            }
+            else activeDice.src = "images/green-bullet.jpg";
+        }
+        //If yellow dice
+        else if(activeDice.src == "images/yellow-question.jpg"){
+            if(diceRoll == 0 && diceRoll == 1){
+                activeDice.src = "images/yellow-brain.jpg";
+            }
+            else if(diceRoll == 2 || diceRoll == 3){
+                activeDice.src = "images/yellow-walk.jpg";
+            }
+            else activeDice.src = "images/yellow-bullet.jpg";
+        }
+        //If red dice
+        else if(activeDice.src == "images/red-question.jpg"){
+            if(diceRoll == 0){
+                activeDice.src = "images/red-brain.jpg";
+            }
+            else if(diceRoll == 1 || diceRoll == 2){
+                activeDice.src = "images/red-walk.jpg";
+            }
+            else activeDice.src = "images/red-bullet.jpg";
+        }
+    }
 }
 
 function nextPlayer(){
