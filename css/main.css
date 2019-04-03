@@ -166,6 +166,11 @@ h1, h2, h3, h4, h5, h6, ul {
     background:white;
 }
 
+.active_dice_img {
+    height:100%;
+    width:100%;
+}
+
 /**PLAYER IMAGES**/
 .player-pic-0, .player-pic-1, .player-pic-2, .player-pic-3 {
     background-size:cover;

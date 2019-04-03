@@ -11,7 +11,7 @@ After rolling 3 dice, you can choose to hold and save the points, or
 keep pushing and roll 3 more dice.
 **/
 
-var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice;
+var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice, allDiceSrc;
 
 //GREEN DICE = TOTAL 6 = INDEX: 0-5
 //YELLOW DICE = TOTAL 4 = INDEX: 6-9
@@ -109,12 +109,32 @@ function init(){
 //     console.log(chosenThree);
 // }
 
+document.querySelector(".zd-title").addEventListener("click", function(){
+    chooseDice();
+});
+
 function chooseDice(){
     var counter = 0;
+    if(allDice.length > 1){}
     while(counter < 3){
         var chosenDice = Math.floor(Math.random() * allDice.length);
+        var indexValue = allDice[chosenDice];
+
         var indexHolder = parseInt(allDice.splice(chosenDice, 1));
+        if(indexValue >= 0 && indexValue < 6){
+            document.querySelector(".dice-" + indexValue).src = "images/gray-brain.jpg";
+            document.querySelector(".active-dice-" + counter).src = "images/green-question.jpg";
+        }
+        else if((indexValue > 5 && indexValue < 10) || indexValue == 7){
+            document.querySelector(".dice-" + indexValue).src = "images/gray-walk.jpg";
+            document.querySelector(".active-dice-" + counter).src = "images/yellow-question.jpg";
+        }
+        else if (indexValue >= 10 && indexValue < 13){
+            document.querySelector(".dice-" + indexValue).src = "images/gray-bullet.jpg";
+            document.querySelector(".active-dice-" + counter).src = "images/red-question.jpg";
+        }
         usedDice.push(indexHolder);
+        
         counter++;
     }
 }
