@@ -11,7 +11,7 @@ After rolling 3 dice, you can choose to hold and save the points, or
 keep pushing and roll 3 more dice.
 **/
 
-var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice, allDiceSrc;
+var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice, allDiceSrc, latestDice;
 
 //GREEN DICE = TOTAL 6 = INDEX: 0-5
 //YELLOW DICE = TOTAL 4 = INDEX: 6-9
@@ -34,6 +34,8 @@ yellowDice = [0, 1, 2, 3, 4, 5];
 redDice = [0, 1, 2, 3, 4, 5];
 
 usedDice = [];
+
+latestDice = [];
 
 init();
 
@@ -115,7 +117,7 @@ document.querySelector(".zd-title").addEventListener("click", function(){
 
 function chooseDice(){
     var counter = 0;
-    if(allDice.length > 1){}
+    latestDice = [];
     while(counter < 3){
         var chosenDice = Math.floor(Math.random() * allDice.length);
         var indexValue = allDice[chosenDice];
@@ -134,7 +136,7 @@ function chooseDice(){
             document.querySelector(".active-dice-" + counter).src = "images/red-question.jpg";
         }
         usedDice.push(indexHolder);
-        
+        latestDice.push(indexHolder);
         counter++;
     }
 }
@@ -171,11 +173,11 @@ document.querySelector(".zd-shots").addEventListener("click",function(){
 //Then use those indexes instead of using .src
 
 function rollAllDice(){
-    for(var i = 0; i < 3; i++){
+    for(var i = 0; i < latestDice.length; i++){
         var diceRoll = Math.floor(Math.random() * 6);
         var activeDice = document.querySelector(".active-dice-" + i);
-        //If green dice
-        if(activeDice.src == "images/green-question.jpg"){
+        //If green
+        if(latestDice[i] >= 0 && latestDice[i] < 6){
             if(diceRoll >= 0 && diceRoll < 3){
                 activeDice.src = "images/green-brain.jpg";
             }
@@ -184,8 +186,8 @@ function rollAllDice(){
             }
             else activeDice.src = "images/green-bullet.jpg";
         }
-        //If yellow dice
-        else if(activeDice.src == "images/yellow-question.jpg"){
+        //If yellow
+        else if (latestDice[i] >= 6 && latestDice[i] < 10){
             if(diceRoll == 0 && diceRoll == 1){
                 activeDice.src = "images/yellow-brain.jpg";
             }
@@ -194,8 +196,8 @@ function rollAllDice(){
             }
             else activeDice.src = "images/yellow-bullet.jpg";
         }
-        //If red dice
-        else if(activeDice.src == "images/red-question.jpg"){
+        //If red
+        else if (latestDice[i] >= 10 && latestDice[i] < 13){
             if(diceRoll == 0){
                 activeDice.src = "images/red-brain.jpg";
             }
@@ -206,6 +208,7 @@ function rollAllDice(){
         }
     }
 }
+
 
 function nextPlayer(){
     document.querySelector(".player-card-" + activePlayer).classList.remove("player_active_border");
