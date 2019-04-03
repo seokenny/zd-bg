@@ -167,6 +167,9 @@ document.querySelector(".zd-shots").addEventListener("click",function(){
     rollAllDice();
 });
 
+//TO DO: Make a new array that stores the latest 3 dice chosen.
+//Then use those indexes instead of using .src
+
 function rollAllDice(){
     for(var i = 0; i < 3; i++){
         var diceRoll = Math.floor(Math.random() * 6);
