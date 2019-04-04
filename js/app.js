@@ -107,7 +107,7 @@ function rollAllDice(){
             if(diceRoll >= 0 && diceRoll < 3){
                 activeDice.src = "images/green-brain.jpg";
                 currentBrains++;
-                displayBrains()
+                displayBrains();
             }
             else if(diceRoll == 3 || diceRoll == 4){
                 activeDice.src = "images/green-walk.jpg";
@@ -124,7 +124,7 @@ function rollAllDice(){
             if(diceRoll == 0 && diceRoll == 1){
                 activeDice.src = "images/yellow-brain.jpg";
                 currentBrains++;
-                displayBrains()
+                displayBrains();
             }
             else if(diceRoll == 2 || diceRoll == 3){
                 activeDice.src = "images/yellow-walk.jpg";
@@ -141,7 +141,7 @@ function rollAllDice(){
             if(diceRoll == 0){
                 activeDice.src = "images/red-brain.jpg";
                 currentBrains++;
-                displayBrains()
+                displayBrains();
             }
             else if(diceRoll == 1 || diceRoll == 2){
                 activeDice.src = "images/red-walk.jpg";
@@ -187,6 +187,12 @@ function checkWin(){
 function nextPlayer(){
     currentBrains = 0;
     currentShots = 0;
+    //Reset Active dice to gray-brain
+    
+    for(var i = 0; i < 3; i++){
+        document.querySelector(".active-dice-" + i).src = "images/gray-brain.jpg";
+    }
+
     //Change active player border
     document.querySelector(".player-card-" + activePlayer).classList.remove("player_active_border");
 
@@ -216,8 +222,6 @@ function resetDice(){
     for(var i = 1; i < 4; i++){
         document.querySelector(".bullet-" + i).src = "images/gray-bullet.jpg";
     }
-    //Reset Active dice to gray-brain
-    // document.querySelectorAll(".active_dice_img").src = "images/gray-brain.jpg";
 }
 
 
