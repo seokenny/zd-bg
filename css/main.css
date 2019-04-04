@@ -175,11 +175,24 @@ h1, h2, h3, h4, h5, h6, ul {
 
 .zd-player-actions {
     background:white;
+    height:50px;
+}
+
+.hold_actions, .roll_actions, .load_actions, .reroll_actions {
+    width:50%;
+    height:100%;
+    float:left;
+    cursor:pointer;
 }
 
 .active_dice_img {
     height:100%;
     width:100%;
+}
+
+.new_gamer {
+    height:50px;
+    background-color:white;
 }
 
 /**PLAYER IMAGES**/

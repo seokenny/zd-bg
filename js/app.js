@@ -11,7 +11,7 @@ After rolling 3 dice, you can choose to hold and save the points, or
 keep pushing and roll 3 more dice.
 **/
 
-var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice, allDiceSrc, latestDice, currentShots;
+var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice, allDiceSrc, latestDice, currentShots, currentBrains;
 
 //GREEN DICE = TOTAL 6 = INDEX: 0-5
 //YELLOW DICE = TOTAL 4 = INDEX: 6-9
@@ -39,17 +39,16 @@ latestDice = [];
 
 currentShots = 0;
 
+currentBrains = 0;
+
+scores = [0, 0, 0, 0];
+
 init();
 
 
-
-
-
-
-
 //When clicked, go to next player
-document.querySelector(".zd-player-actions").addEventListener("click",function(){
-    nextPlayer();
+document.querySelector(".hold_actions").addEventListener("click",function(){
+    holdBrains();
 });
 
 function init(){
@@ -61,59 +60,8 @@ function init(){
     document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
 }
 
-// function chooseDice(){
-//     var chosenThree;
-//     chosenThree = [];
-//     var bothHave, usedHave, chosenHave, rechosenDice;
-//     while(chosenThree.length < 3){
-//         var chosenDice = Math.floor(Math.random()*allDice.length);
-//         //First roll ever - automatically push
-//         //Skips second time
-//         if(chosenThree.length == 0 && usedDice.length == 0){
-//             chosenThree.push(chosenDice);
-//             usedDice.push(chosenDice);
-//         }
-//         //If usedDice has but chosenThree is empty
-//         else if(chosenThree.length == 0){
-//             var count = 0;
-//             for(var i = 0; i < usedDice.length; i++){
-//                 if(chosenDice == usedDice[i]){
-//                     count++;
-//                 }
-//             }
-//             if(count < 1){
-//                 chosenThree.push(chosenDice);
-//                 usedDice.push(chosenDice);
-//             }
-//         }
-//         else {
-//             for(var i = 0; i < chosenThree.length; i++){
-//                 if(chosenDice != chosenThree[i]){
-//                     chosenHave = true;
-//                 }
-//                 else {
-//                     choseHave = false;
-//                     while(chosenHave == false){
-//                         rechosenDice = rerollUntilNew(chosenThree, usedDice);
-//                     }
-//                 }
-//             }
-//             for(var i = 0; i < usedDice.length; i++){
-//                 if(chosenDice != usedDice[i]){
-//                     usedHave = true;
-//                 } else usedHave = false;
-//                 console.log(usedHave);
-//             }
-//             if(usedHave == true && chosenHave == true){
-//                 chosenThree.push(chosenDice);
-//                 usedDice.push(chosenDice);
-//             }
-//         }
-//     }
-//     console.log(chosenThree);
-// }
 
-document.querySelector(".zd-title").addEventListener("click", function(){
+document.querySelector(".load_actions").addEventListener("click", function(){
     chooseDice();
 });
 
@@ -143,31 +91,7 @@ function chooseDice(){
     }
 }
 
-
-// function rerollUntilNew(chosenThree, usedDice){
-//     var rechosenDice = Math.floor(Math.random()*allDice.length);
-//     var ifTrue = true;
-//     while(ifTrue){
-//         var counter = 0;
-//         for(var i = 0; i < chosenThree.length; i++){
-//             if(rechosenDice != chosenThree[i]){
-//                 counter++;
-//             }
-//         }
-//         for(var i = 0; i < usedDice.length; i++){
-//             if(rechosenDice != usedDice[i]){
-//                 counter++;
-//             }
-//         }
-//         if(counter = 2){
-//             ifTrue = false;
-//         }
-//         else rechosenDice = Math.floor(Math.random()*allDice.length);
-//     }
-//     return rechosenDice;
-// }
-
-document.querySelector(".zd-shots").addEventListener("click",function(){
+document.querySelector(".roll_actions").addEventListener("click",function(){
     rollAllDice();
 });
 
@@ -182,6 +106,8 @@ function rollAllDice(){
         if(latestDice[i] >= 0 && latestDice[i] < 6){
             if(diceRoll >= 0 && diceRoll < 3){
                 activeDice.src = "images/green-brain.jpg";
+                currentBrains++;
+                displayBrains()
             }
             else if(diceRoll == 3 || diceRoll == 4){
                 activeDice.src = "images/green-walk.jpg";
@@ -197,6 +123,8 @@ function rollAllDice(){
         else if (latestDice[i] >= 6 && latestDice[i] < 10){
             if(diceRoll == 0 && diceRoll == 1){
                 activeDice.src = "images/yellow-brain.jpg";
+                currentBrains++;
+                displayBrains()
             }
             else if(diceRoll == 2 || diceRoll == 3){
                 activeDice.src = "images/yellow-walk.jpg";
@@ -212,6 +140,8 @@ function rollAllDice(){
         else if (latestDice[i] >= 10 && latestDice[i] < 13){
             if(diceRoll == 0){
                 activeDice.src = "images/red-brain.jpg";
+                currentBrains++;
+                displayBrains()
             }
             else if(diceRoll == 1 || diceRoll == 2){
                 activeDice.src = "images/red-walk.jpg";
@@ -229,22 +159,45 @@ function rollAllDice(){
 function checkBullets(){
     if(currentShots >= 3){
         currentShots = 0;
+        resetDice();
         nextPlayer();
     }
 }
 
+function displayBrains(){
+    document.querySelector(".zd-brains-count").textContent = currentBrains;
+}
+
+function holdBrains(){
+    checkWin();
+    scores[activePlayer] += currentBrains;
+    document.querySelector(".player-brain-" + activePlayer).textContent = scores[activePlayer];
+    document.querySelector(".zd-brains-count").textContent = 0;
+    resetDice();
+    nextPlayer();
+}
+
+function checkWin(){
+    if(scores[activePlayer] >= 13){
+        document.querySelector(".cpd_text").innerHTML = "WINNER!!!!!";
+        document.querySelector(".zd-player-actions").style.visibility = "hidden";
+    }
+}
+
 function nextPlayer(){
+    currentBrains = 0;
+    currentShots = 0;
+    //Change active player border
     document.querySelector(".player-card-" + activePlayer).classList.remove("player_active_border");
 
     activePlayer == 3 ? activePlayer = 0 : activePlayer += 1;
     document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
 
+    //Change Player number displayer
     document.querySelector(".cpd_text").innerHTML = "PLAYER<br>" + (activePlayer + 1);
+
 }
 
-//RECHECK WHY THIS WONT WORK (FIRST FOR LOOP)
-//THIS WONT WORK BECAUSE IT USES THE GLOBAL ARRAY
-//I NEED TO MAKE AN ARRAY FOR EACH COLORED DICE
 function resetDice(){
     //Reset dice
     allDice = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -263,5 +216,8 @@ function resetDice(){
     for(var i = 1; i < 4; i++){
         document.querySelector(".bullet-" + i).src = "images/gray-bullet.jpg";
     }
+    //Reset Active dice to gray-brain
+    // document.querySelectorAll(".active_dice_img").src = "images/gray-brain.jpg";
 }
+
 
