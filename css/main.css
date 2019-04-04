@@ -140,6 +140,17 @@ h1, h2, h3, h4, h5, h6, ul {
     background:white;
 }
 
+.shot_icon {
+    width:33.33%;
+    height:100%;
+    float:left;
+}
+
+.bullet_img_size {
+    height:100%;
+    width:100%;
+}
+
 .zd-brains {
     background:#ddd;
 }

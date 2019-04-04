@@ -11,7 +11,7 @@ After rolling 3 dice, you can choose to hold and save the points, or
 keep pushing and roll 3 more dice.
 **/
 
-var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice, allDiceSrc, latestDice;
+var activePlayer, scores, allDice, greenDice, yellowDice, redDice, usedDice, allDiceSrc, latestDice, currentShots;
 
 //GREEN DICE = TOTAL 6 = INDEX: 0-5
 //YELLOW DICE = TOTAL 4 = INDEX: 6-9
@@ -36,6 +36,8 @@ redDice = [0, 1, 2, 3, 4, 5];
 usedDice = [];
 
 latestDice = [];
+
+currentShots = 0;
 
 init();
 
@@ -184,7 +186,12 @@ function rollAllDice(){
             else if(diceRoll == 3 || diceRoll == 4){
                 activeDice.src = "images/green-walk.jpg";
             }
-            else activeDice.src = "images/green-bullet.jpg";
+            else {
+                activeDice.src = "images/green-bullet.jpg";
+                currentShots++;
+                document.querySelector(".bullet-" + currentShots).src = "images/white-bullet.jpg";
+                checkBullets();
+            }
         }
         //If yellow
         else if (latestDice[i] >= 6 && latestDice[i] < 10){
@@ -194,7 +201,12 @@ function rollAllDice(){
             else if(diceRoll == 2 || diceRoll == 3){
                 activeDice.src = "images/yellow-walk.jpg";
             }
-            else activeDice.src = "images/yellow-bullet.jpg";
+            else {
+                activeDice.src = "images/yellow-bullet.jpg";
+                currentShots++;
+                document.querySelector(".bullet-" + currentShots).src = "images/white-bullet.jpg";
+                checkBullets();
+            }
         }
         //If red
         else if (latestDice[i] >= 10 && latestDice[i] < 13){
@@ -204,11 +216,22 @@ function rollAllDice(){
             else if(diceRoll == 1 || diceRoll == 2){
                 activeDice.src = "images/red-walk.jpg";
             }
-            else activeDice.src = "images/red-bullet.jpg";
+            else {
+                activeDice.src = "images/red-bullet.jpg";
+                currentShots++;
+                document.querySelector(".bullet-" + currentShots).src = "images/white-bullet.jpg";
+                checkBullets();
+            }
         }
     }
 }
 
+function checkBullets(){
+    if(currentShots >= 3){
+        currentShots = 0;
+        nextPlayer();
+    }
+}
 
 function nextPlayer(){
     document.querySelector(".player-card-" + activePlayer).classList.remove("player_active_border");
@@ -223,17 +246,22 @@ function nextPlayer(){
 //THIS WONT WORK BECAUSE IT USES THE GLOBAL ARRAY
 //I NEED TO MAKE AN ARRAY FOR EACH COLORED DICE
 function resetDice(){
-    for(var i = 0; i < usedColorDice.length; i++){
-        if(usedColorDice[i] == "green-brain" || usedColorDice[i] == "green-walk" || usedColorDice[i] == "green-bullet"){
-            greenDice.push(usedColorDice[i]);
+    //Reset dice
+    allDice = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    usedDice = [];
+    //Reset src
+    for(var i = 0; i < allDice.length; i++){
+        if(i >= 0 && i < 6){
+            document.querySelector(".dice-" + i).src = "images/green-brain.jpg";
         }
-        else if(usedColorDice[i] == "yellow-brain" || usedColorDice[i] == "yellow-walk" || usedColorDice[i] == "yellow-bullet"){
-            yellowDice.push(usedColorDice[i]);
+        else if (i >= 6 && i < 10){
+            document.querySelector(".dice-" + i).src = "images/yellow-walk.jpg";
         }
-        else redDice.push(usedColorDice[i]);
+        else document.querySelector(".dice-" + i).src = "images/red-bullet.jpg";
     }
-    //Return all used dice to allDice array
-    for(var i = 0; i < usedDice.length; i++){
-        allDice.push(usedDice[i]);
+    //Reset bullets
+    for(var i = 1; i < 4; i++){
+        document.querySelector(".bullet-" + i).src = "images/gray-bullet.jpg";
     }
 }
+
