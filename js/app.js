@@ -158,7 +158,6 @@ function rollAllDice(){
 
 function checkBullets(){
     if(currentShots >= 3){
-        currentShots = 0;
         resetDice();
         nextPlayer();
     }
@@ -224,4 +223,20 @@ function resetDice(){
     }
 }
 
+document.querySelector(".new_gamer").addEventListener("click",function(){
+    newGame();
+});
 
+function newGame(){
+    document.querySelector(".player-card-" + activePlayer).classList.remove("player_active_border");
+    for(var i = 0; i < 4; i++){
+        document.querySelector(".player-brain-" + i).textContent = 0;
+    }
+    activePlayer = 0;
+    scores = [0, 0, 0, 0];
+    currentBrains = 0;
+    currentShots = 0;
+    document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
+    resetDice();
+    document.querySelector(".cpd_text").innerHTML = "PLAYER<br>" + (activePlayer + 1);
+}
