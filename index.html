@@ -15,10 +15,6 @@
 
 <div id="full_back">
 
-    <div class="current-player-display wt_center">
-        <h1 class="cpd_text wt_center">PLAYER<br>1</h1>
-    </div>
-
     <div id="game_board" class="wt_center">
         <div class="game_board_inner">
             <!--LEFT-SIDE-->
@@ -47,6 +43,9 @@
                     <div class="zd-title center_rows">
                         <h1>ZOMBIE DICE</h1>
                     </div>
+                    <div class="current-player-display">
+                        <h1 class="cpd_text wt_center">PLAYER<br>1</h1>
+                    </div>
                     <div class="zd-scorer center_rows">
                         <div class="zd-shots half_row">
                             <div class="shot-0 shot_icon">
@@ -74,7 +73,7 @@
                             <img src="images/gray-brain.jpg" class="active-dice-2 active_dice_img">
                         </div>
                     </div>
-                    <div class="zd-player-actions center_rows">
+                    <div class="zd-player-actions zpa1 center_rows">
                         <div class="load_actions">
                             <p>LOAD DICE</p>
                         </div>
@@ -82,7 +81,7 @@
                             <p>ROLL DICE</p>
                         </div>
                     </div>
-                    <div class="zd-player-actions center_rows">
+                    <div class="zd-player-actions zpa2 center_rows">
                         <div class="hold_actions">
                             <p>HOLD BRAINS</p>
                         </div>
@@ -100,19 +99,19 @@
                 <div class="players-section">
                     <div class="player-card-0 p-card">
                         <div class="player-pic-0 p-pic"></div>
-                        <h1 class="player-brain-0">0</h1>
+                        <div class="player-brain-0"><span class="wt_center brain-counter brain-counter-0">0</span></div>
                     </div>
                     <div class="player-card-1 p-card">
                         <div class="player-pic-1 p-pic"></div>
-                        <h1 class="player-brain-1">0</h1>
+                        <div class="player-brain-1"><span class="wt_center brain-counter brain-counter-1">0</span></div>
                     </div>
                     <div class="player-card-2 p-card">
                         <div class="player-pic-2 p-pic"></div>
-                        <h1 class="player-brain-2">0</h1>
+                        <div class="player-brain-2"><span class="wt_center brain-counter brain-counter-2">0</span></div>
                     </div>
                     <div class="player-card-3 p-card">
                         <div class="player-pic-3 p-pic"></div>
-                        <h1 class="player-brain-3">0</h1>
+                        <div class="player-brain-3"><span class="wt_center brain-counter brain-counter-3">0</span></div>
                     </div>
                 </div>
             </div>

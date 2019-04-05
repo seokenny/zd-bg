@@ -43,6 +43,8 @@ currentBrains = 0;
 
 scores = [0, 0, 0, 0];
 
+var winner = false;
+
 init();
 
 
@@ -168,18 +170,22 @@ function displayBrains(){
 }
 
 function holdBrains(){
-    checkWin();
     scores[activePlayer] += currentBrains;
-    document.querySelector(".player-brain-" + activePlayer).textContent = scores[activePlayer];
-    document.querySelector(".zd-brains-count").textContent = 0;
-    resetDice();
-    nextPlayer();
+    document.querySelector(".brain-counter-" + activePlayer).textContent = scores[activePlayer];
+    checkWin();
+    if(winner == false){
+        document.querySelector(".zd-brains-count").textContent = 0;
+        resetDice();
+        nextPlayer();
+    }
 }
 
 function checkWin(){
     if(scores[activePlayer] >= 13){
         document.querySelector(".cpd_text").innerHTML = "WINNER!!!!!";
-        document.querySelector(".zd-player-actions").style.visibility = "hidden";
+        document.querySelector(".zpa1").style.visibility = "hidden";
+        document.querySelector(".zpa2").style.visibility = "hidden";
+        winner = true;
     }
 }
 
@@ -230,7 +236,7 @@ document.querySelector(".new_gamer").addEventListener("click",function(){
 function newGame(){
     document.querySelector(".player-card-" + activePlayer).classList.remove("player_active_border");
     for(var i = 0; i < 4; i++){
-        document.querySelector(".player-brain-" + i).textContent = 0;
+        document.querySelector(".brain-counter-" + i).textContent = 0;
     }
     activePlayer = 0;
     scores = [0, 0, 0, 0];
@@ -239,4 +245,8 @@ function newGame(){
     document.querySelector(".player-card-" + activePlayer).classList.add("player_active_border");
     resetDice();
     document.querySelector(".cpd_text").innerHTML = "PLAYER<br>" + (activePlayer + 1);
+    document.querySelector(".zpa1").style.visibility = "unset";
+    document.querySelector(".zpa2").style.visibility = "unset";
+    document.querySelector(".zd-brains-count").textContent = 0;
+    winner = false;
 }

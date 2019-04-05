@@ -6,7 +6,7 @@ h1, h2, h3, h4, h5, h6, ul {
 #full_back {
     height:100vh;
     width:100%;
-    background-color:#EFF9F0;
+    background-color:#1D7874;
     position:relative;
     font-family:"Special Elite";
 }
@@ -14,8 +14,6 @@ h1, h2, h3, h4, h5, h6, ul {
 #game_board {
     width:1200px;
     height:750px;
-    background-color:#1D7874;
-    box-shadow:3px 5px 9px #aaa;
 }
 
 .wt_center {
@@ -104,7 +102,7 @@ h1, h2, h3, h4, h5, h6, ul {
 .p-pic {
     height:100%;
     width:50%;
-    background:white;
+    float:left;
 }
 
 /**CENTER**/
@@ -124,6 +122,8 @@ h1, h2, h3, h4, h5, h6, ul {
     font-size:2em;
     border:unset;
     color:white;
+    margin-top:10%;
+    height:unset;
 }
 
 .zd-scorer {
@@ -226,9 +226,34 @@ h1, h2, h3, h4, h5, h6, ul {
     height:100px;
     width:300px;
     background:coral;
-    z-index:2;
+    margin:auto;
+    margin-top:10px;
+    margin-bottom:15px;
+    position:relative;
 }
 
 .current-player-display h1 {
     color:white;
+}
+
+/**SIMPLE HOVER**/
+.load_actions:hover {color:coral;}
+.roll_actions:hover {color:coral;}
+.hold_actions:hover {color:coral;}
+.reroll_actions:hover {color:coral;}
+.new_gamer:hover {color:coral;}
+
+
+.player-brain-0, .player-brain-1, .player-brain-2, .player-brain-3 {
+    background-image:url("../images/gray-brain.jpg");
+    height:100%;
+    width:50%;
+    float:left;
+    position:relative;
+    background-size:cover;
+}
+
+.brain-counter {
+    color:white;
+    font-size:2em;
 }
