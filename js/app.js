@@ -48,6 +48,10 @@ var winner = false;
 init();
 
 
+document.querySelector(".close_rules").addEventListener("click",function(){
+    document.querySelector("#game_rules_pop").style.display = "none";
+});
+
 //When clicked, go to next player
 document.querySelector(".hold_actions").addEventListener("click",function(){
     holdBrains();
@@ -231,6 +235,10 @@ function resetDice(){
 
 document.querySelector(".new_gamer").addEventListener("click",function(){
     newGame();
+});
+
+document.querySelector(".rules_actions").addEventListener("click",function(){
+    document.querySelector("#game_rules_pop").style.display = "block";
 });
 
 function newGame(){

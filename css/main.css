@@ -178,7 +178,7 @@ h1, h2, h3, h4, h5, h6, ul {
     height:50px;
 }
 
-.hold_actions, .roll_actions, .load_actions, .reroll_actions {
+.hold_actions, .roll_actions, .load_actions, .reroll_actions, .rules_actions {
     width:50%;
     height:100%;
     float:left;
@@ -242,6 +242,7 @@ h1, h2, h3, h4, h5, h6, ul {
 .roll_actions:hover {color:coral;}
 .hold_actions:hover {color:coral;}
 .reroll_actions:hover {color:coral;}
+.rules_actions:hover {color:coral;}
 .new_gamer:hover {color:coral;}
 
 
@@ -257,4 +258,28 @@ h1, h2, h3, h4, h5, h6, ul {
 .brain-counter {
     color:white;
     font-size:2em;
+}
+
+/**GAME RULES**/
+#game_rules_pop {
+    display:none;
+    height:600px;
+    width:500px;
+    background-color:coral;
+    z-index:20;
+    box-shadow:2px 2px 4px #444;
+    position:fixed;
+}
+
+.rules_text_contain {
+    font-size:.8em;
+    width:90%;
+    line-height:20px;
+    color:white;
+}
+
+.close_rules {
+    font-weight:bold;
+    cursor:pointer;
+    display:inline-block;
 }
