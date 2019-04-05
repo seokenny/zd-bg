@@ -113,7 +113,6 @@ h1, h2, h3, h4, h5, h6, ul {
 .center_rows {
     width:80%;
     height:20%;
-    border:1px solid white;
     display:inline-block;
     margin:5px;
 }
@@ -153,6 +152,7 @@ h1, h2, h3, h4, h5, h6, ul {
 
 .zd-brains {
     background:#ddd;
+    position:relative;
 }
 
 .zd_active_dice {
@@ -218,7 +218,7 @@ h1, h2, h3, h4, h5, h6, ul {
 }
 
 .player_active_border {
-    border:7px solid black;
+    border:7px solid coral;
 }
 
 /**CURRENT PLAYER DISPLAY**/
@@ -230,6 +230,7 @@ h1, h2, h3, h4, h5, h6, ul {
     margin-top:10px;
     margin-bottom:15px;
     position:relative;
+    border:5px solid white;
 }
 
 .current-player-display h1 {
